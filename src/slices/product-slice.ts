@@ -35,6 +35,9 @@ const productsSlice = createSlice({
     setSelectedProductId: (state, action: PayloadAction<string | null>) => {
       state.selectedProductId = action.payload;
     },
+    clearAll: () => {
+      return initialState;
+    },
   },
 });
 
@@ -44,5 +47,6 @@ export const {
   setOffset,
   setLimit,
   setSelectedProductId,
+  clearAll,
 } = productsSlice.actions;
 export const productsReducer = productsSlice.reducer;

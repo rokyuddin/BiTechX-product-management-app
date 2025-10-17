@@ -17,8 +17,11 @@ export const productsApi = baseApi.injectEndpoints({
           offset: offset.toString(),
           limit: limit.toString(),
         });
-        if (search) params.append("searchedText", search);
         if (categoryId) params.append("categoryId", categoryId);
+        if (search) {
+          return `/products/search?searchedText=${search}`;
+        }
+
         return `/products?${params}`;
       },
       providesTags: [{ type: "Products", id: "LIST" }],
