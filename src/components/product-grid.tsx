@@ -7,6 +7,7 @@ import ProductCard from "./product-card";
 import Link from "next/link";
 import { Plus } from "lucide-react";
 import { setSelectedProductId } from "@/slices/product-slice";
+import { ConfirmModal } from "./modal";
 
 export default function ProductGrid() {
   const { searchTerm, category, offset, limit, selectedProductId } =
@@ -34,6 +35,7 @@ export default function ProductGrid() {
     try {
       await deleteProduct(id).unwrap();
       alert("Product deleted successfully");
+      dispatch(setSelectedProductId(null));
     } catch (err: any) {
       console.error("Failed to delete product:", err);
     }
@@ -43,8 +45,8 @@ export default function ProductGrid() {
     <div>
       {/* Error */}
       {error && (
-        <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
-          <p className="text-red-700">
+        <div className="mb-6 p-4 bg-danger/10 border border-danger/20 rounded-lg">
+          <p className="text-danger">
             {typeof error === "object" && "data" in error
               ? (error.data as any)?.message || "An error occurred"
               : "An error occurred"}
@@ -55,7 +57,7 @@ export default function ProductGrid() {
       {/* Loading */}
       {isLoading && (
         <div className="text-center py-12">
-          <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+          <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-secondary"></div>
         </div>
       )}
 
@@ -75,41 +77,24 @@ export default function ProductGrid() {
       )}
 
       {/* Delete Product Modal */}
-      {selectedProductId && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-          <div className="bg-white p-6 rounded-lg">
-            <p className="text-slate-600 mb-4">
-              Are you sure you want to delete this product?
-            </p>
-            <div className="flex justify-end gap-4">
-              <button
-                type="button"
-                disabled={isDeleting}
-                onClick={() => dispatch(setSelectedProductId(null))}
-                className="px-4 py-2 bg-slate-600 text-white rounded-lg hover:bg-slate-700"
-              >
-                Cancel
-              </button>
-              <button
-                type="button"
-                disabled={isDeleting}
-                onClick={onDelete.bind(null, selectedProductId)}
-                className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
-              >
-                {isDeleting ? "Deleting..." : "Delete"}
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      <ConfirmModal
+        isOpen={!!selectedProductId}
+        onClose={() => dispatch(setSelectedProductId(null))}
+        message="Are you sure you want to delete this product? This action cannot be undone."
+        confirmText={isDeleting ? "Deleting..." : "Delete"}
+        cancelText="Cancel"
+        onConfirm={() => onDelete(selectedProductId!)}
+        isLoading={isDeleting}
+        variant="danger"
+      />
 
       {/* Empty State */}
       {!isLoading && products && products.length === 0 && (
         <div className="text-center py-12">
-          <p className="text-slate-600 mb-4">No products found</p>
+          <p className="text-primary-600 mb-4">No products found</p>
           <Link
             href="/products/create"
-            className="inline-flex items-center gap-2 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+            className="inline-flex items-center gap-2 px-6 py-2 bg-secondary text-white rounded-lg hover:bg-secondary/90"
           >
             <Plus size={20} />
             Create first product

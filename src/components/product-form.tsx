@@ -117,30 +117,30 @@ export default function ProductForm({
   };
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-background-light">
       <div className="max-w-2xl mx-auto p-4 py-8">
         <Link
           href="/products"
-          className="flex items-center gap-2 text-blue-600 hover:text-blue-700 mb-6"
+          className="flex items-center gap-2 text-secondary hover:text-secondary/80 mb-6"
         >
           <ArrowLeft size={20} />
           Back
         </Link>
 
         <div className="bg-white rounded-lg shadow p-8">
-          <h1 className="text-3xl font-bold text-slate-900 mb-8">
+          <h1 className="text-3xl font-bold text-primary-dark mb-8">
             {mode === "create" ? "Create Product" : "Edit Product"}
           </h1>
 
           {error && (
-            <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
-              <p className="text-red-700">{error}</p>
+            <div className="mb-6 p-4 bg-danger/10 border border-danger/20 rounded-lg">
+              <p className="text-danger">{error}</p>
             </div>
           )}
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-2">
+              <label className="block text-sm font-medium text-primary-dark mb-2">
                 Product Name *
               </label>
               <input
@@ -152,17 +152,17 @@ export default function ProductForm({
                 disabled={isLoading}
                 className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 transition ${
                   errors.name
-                    ? "border-red-300 focus:ring-red-500"
-                    : "border-slate-300 focus:ring-blue-500"
+                    ? "border-danger focus:ring-danger"
+                    : "border-primary-300 focus:ring-secondary"
                 }`}
               />
               {errors.name && (
-                <p className="text-red-600 text-sm mt-1">{errors.name}</p>
+                <p className="text-danger text-sm mt-1">{errors.name}</p>
               )}
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-2">
+              <label className="block text-sm font-medium text-primary-dark mb-2">
                 Price ($) *
               </label>
               <input
@@ -174,17 +174,17 @@ export default function ProductForm({
                 disabled={isLoading}
                 className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 transition ${
                   errors.price
-                    ? "border-red-300 focus:ring-red-500"
-                    : "border-slate-300 focus:ring-blue-500"
+                    ? "border-danger focus:ring-danger"
+                    : "border-primary-300 focus:ring-secondary"
                 }`}
               />
               {errors.price && (
-                <p className="text-red-600 text-sm mt-1">{errors.price}</p>
+                <p className="text-danger text-sm mt-1">{errors.price}</p>
               )}
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-2">
+              <label className="block text-sm font-medium text-primary-dark mb-2">
                 Category *
               </label>
               <select
@@ -194,8 +194,8 @@ export default function ProductForm({
                 disabled={isLoading}
                 className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 transition ${
                   errors.category
-                    ? "border-red-300 focus:ring-red-500"
-                    : "border-slate-300 focus:ring-blue-500"
+                    ? "border-danger focus:ring-danger"
+                    : "border-primary-300 focus:ring-secondary"
                 }`}
               >
                 <option value="">Select a category</option>
@@ -206,12 +206,12 @@ export default function ProductForm({
                 ))}
               </select>
               {errors.category && (
-                <p className="text-red-600 text-sm mt-1">{errors.category}</p>
+                <p className="text-danger text-sm mt-1">{errors.category}</p>
               )}
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-2">
+              <label className="block text-sm font-medium text-primary-dark mb-2">
                 Description *
               </label>
               <textarea
@@ -223,19 +223,17 @@ export default function ProductForm({
                 disabled={isLoading}
                 className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 transition resize-none ${
                   errors.description
-                    ? "border-red-300 focus:ring-red-500"
-                    : "border-slate-300 focus:ring-blue-500"
+                    ? "border-danger focus:ring-danger"
+                    : "border-primary-300 focus:ring-secondary"
                 }`}
               />
               {errors.description && (
-                <p className="text-red-600 text-sm mt-1">
-                  {errors.description}
-                </p>
+                <p className="text-danger text-sm mt-1">{errors.description}</p>
               )}
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-2">
+              <label className="block text-sm font-medium text-primary-dark mb-2">
                 Images
               </label>
               {formData.images.map((image, index) => (
@@ -250,7 +248,7 @@ export default function ProductForm({
                     }}
                     placeholder="https://..."
                     disabled={isLoading}
-                    className="flex-1 px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+                    className="flex-1 px-4 py-2 border border-primary-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary transition"
                   />
                   <button
                     type="button"
@@ -261,7 +259,7 @@ export default function ProductForm({
                       setFormData((prev) => ({ ...prev, images: newImages }));
                     }}
                     disabled={isLoading}
-                    className="w-10 h-10 flex items-center justify-center sm:w-fit sm:h-fit sm:text-base sm:px-3 sm:py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition"
+                    className="w-10 h-10 flex items-center justify-center sm:w-fit sm:h-fit sm:text-base sm:px-3 sm:py-2 bg-danger text-white rounded-lg hover:bg-danger/90 transition"
                   >
                     <span className="hidden sm:block">Remove</span>
                     <Trash size={18} className="sm:hidden" />
@@ -277,7 +275,7 @@ export default function ProductForm({
                   }));
                 }}
                 disabled={isLoading}
-                className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"
+                className="px-4 py-2 bg-accent text-white rounded-lg hover:bg-accent/90 transition"
               >
                 Add Image
               </button>
@@ -287,7 +285,7 @@ export default function ProductForm({
               <button
                 type="submit"
                 disabled={isLoading}
-                className="flex-1 bg-blue-600 hover:bg-blue-700 disabled:opacity-50 text-white font-semibold py-2 rounded-lg transition"
+                className="flex-1 bg-secondary hover:bg-secondary/90 disabled:opacity-50 text-white font-semibold py-2 rounded-lg transition"
               >
                 {isLoading
                   ? "Saving..."
@@ -299,7 +297,7 @@ export default function ProductForm({
                 type="button"
                 onClick={() => router.push("/products")}
                 disabled={isLoading}
-                className="px-6 py-2 border border-slate-300 text-slate-700 rounded-lg hover:bg-slate-50 transition"
+                className="px-6 py-2 border border-primary-300 text-primary-dark rounded-lg hover:bg-primary-50 transition"
               >
                 Cancel
               </button>

@@ -24,8 +24,8 @@ export default function EditProductPage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+      <div className="min-h-screen flex items-center justify-center bg-background-light">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-secondary"></div>
       </div>
     );
   }
@@ -33,10 +33,10 @@ export default function EditProductPage() {
   if (productError || categoriesError) {
     const error = productError || categoriesError;
     return (
-      <div className="min-h-screen bg-slate-50 p-4">
+      <div className="min-h-screen bg-background-light p-4">
         <div className="max-w-2xl mx-auto">
-          <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-            <p className="text-red-700">
+          <div className="bg-danger/10 border border-danger/20 rounded-lg p-4">
+            <p className="text-danger">
               {error && typeof error === "object" && "data" in error
                 ? (error as any).data?.message || "Failed to load data"
                 : "Failed to load data"}

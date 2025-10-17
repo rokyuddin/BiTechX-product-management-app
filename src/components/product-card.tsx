@@ -51,7 +51,7 @@ export default function ProductCard({
   return (
     <div className="bg-white rounded-lg shadow hover:shadow-lg transition group overflow-hidden h-full flex flex-col">
       {/* Image */}
-      <div className="h-48 bg-slate-200 overflow-hidden relative">
+      <div className="h-48 bg-primary-200 overflow-hidden relative">
         {images.length > 0 ? (
           <>
             <img
@@ -89,7 +89,7 @@ export default function ProductCard({
             )}
           </>
         ) : (
-          <div className="w-full h-full flex items-center justify-center text-slate-400">
+          <div className="w-full h-full flex items-center justify-center text-primary-400">
             <ShoppingCart size={32} />
           </div>
         )}
@@ -98,28 +98,28 @@ export default function ProductCard({
       {/* Content */}
       <div className="p-4 flex-1 flex flex-col">
         <Link href={`/products/${product.slug}`}>
-          <h3 className="font-semibold text-slate-900 hover:text-blue-600 transition line-clamp-2">
+          <h3 className="font-semibold text-primary-dark hover:text-secondary transition line-clamp-2">
             {product.name}
           </h3>
         </Link>
-        <p className="text-sm text-slate-600 line-clamp-2 my-2 flex-1">
+        <p className="text-sm text-primary-600 line-clamp-2 my-2 flex-1">
           {product.description}
         </p>
         <div className="flex justify-between items-center mb-4">
-          <span className="text-lg font-bold text-blue-600">
+          <span className="text-lg font-bold text-secondary">
             ${Number(product.price).toFixed(2)}
           </span>
-          <span className="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded">
+          <span className="text-xs bg-primary-100 text-primary-600 px-2 py-1 rounded">
             {product.category?.name || "No Category"}
           </span>
         </div>
       </div>
 
       {/* Actions */}
-      <div className="p-4 border-t border-slate-200 flex gap-2">
+      <div className="p-4 border-t border-primary-200 flex gap-2">
         <Link
           href={`/products/${product.slug}`}
-          className="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-blue-50 text-blue-600 rounded-lg hover:bg-blue-100 transition text-sm font-medium"
+          className="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-secondary/10 text-secondary rounded-lg hover:bg-secondary/20 transition text-sm font-medium"
         >
           <Edit2 size={16} />
           View
@@ -127,7 +127,7 @@ export default function ProductCard({
         {showDeleteButton && onDelete && (
           <button
             onClick={() => onDelete(product.slug as string)}
-            className="flex items-center justify-center gap-2 px-3 py-2 bg-red-50 text-red-600 rounded-lg hover:bg-red-100 transition text-sm font-medium"
+            className="flex items-center justify-center gap-2 px-3 py-2 bg-danger/10 text-danger rounded-lg hover:bg-danger/20 transition text-sm font-medium"
           >
             <Trash2 size={16} />
             Delete

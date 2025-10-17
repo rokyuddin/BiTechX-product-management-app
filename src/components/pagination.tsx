@@ -24,7 +24,7 @@ export default function Pagination({
   return (
     <div className="flex flex-col items-center gap-4 mt-8">
       {totalItems !== undefined && (
-        <div className="text-sm text-slate-600">
+        <div className="text-sm text-primary-600">
           Showing {Math.min((currentPage - 1) * itemsPerPage + 1, totalItems)}{" "}
           to {Math.min(currentPage * itemsPerPage, totalItems)} of {totalItems}{" "}
           products
@@ -34,7 +34,7 @@ export default function Pagination({
         <button
           onClick={() => onPageChange(currentPage - 1)}
           disabled={currentPage === 1}
-          className="p-2 border border-slate-300 rounded-lg hover:bg-slate-100 disabled:opacity-50 disabled:cursor-not-allowed transition"
+          className="p-2 border border-primary-300 rounded-lg hover:bg-primary-50 disabled:opacity-50 disabled:cursor-not-allowed transition"
         >
           <ChevronLeft size={20} />
         </button>
@@ -43,11 +43,13 @@ export default function Pagination({
           <>
             <button
               onClick={() => onPageChange(1)}
-              className="px-3 py-2 border border-slate-300 rounded-lg hover:bg-slate-100 transition"
+              className="px-3 py-2 border border-primary-300 rounded-lg hover:bg-primary-50 transition"
             >
               1
             </button>
-            {visiblePages[0] > 2 && <span className="px-2">...</span>}
+            {visiblePages[0] > 2 && (
+              <span className="px-2 text-primary-400">...</span>
+            )}
           </>
         )}
 
@@ -57,8 +59,8 @@ export default function Pagination({
             onClick={() => onPageChange(p)}
             className={`px-3 py-2 rounded-lg transition ${
               p === currentPage
-                ? "bg-blue-600 text-white"
-                : "border border-slate-300 hover:bg-slate-100"
+                ? "bg-secondary text-white"
+                : "border border-primary-300 hover:bg-primary-50"
             }`}
           >
             {p}
@@ -68,11 +70,11 @@ export default function Pagination({
         {visiblePages[visiblePages.length - 1] < totalPages && (
           <>
             {visiblePages[visiblePages.length - 1] < totalPages - 1 && (
-              <span className="px-2">...</span>
+              <span className="px-2 text-primary-400">...</span>
             )}
             <button
               onClick={() => onPageChange(totalPages)}
-              className="px-3 py-2 border border-slate-300 rounded-lg hover:bg-slate-100 transition"
+              className="px-3 py-2 border border-primary-300 rounded-lg hover:bg-primary-50 transition"
             >
               {totalPages}
             </button>
@@ -82,7 +84,7 @@ export default function Pagination({
         <button
           onClick={() => onPageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
-          className="p-2 border border-slate-300 rounded-lg hover:bg-slate-100 disabled:opacity-50 disabled:cursor-not-allowed transition"
+          className="p-2 border border-primary-300 rounded-lg hover:bg-primary-50 disabled:opacity-50 disabled:cursor-not-allowed transition"
         >
           <ChevronRight size={20} />
         </button>
