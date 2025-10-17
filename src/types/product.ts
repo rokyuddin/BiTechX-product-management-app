@@ -1,11 +1,4 @@
-export interface Category {
-  id: string;
-  name: string;
-  description?: string | null;
-  image?: string;
-  createdAt?: string;
-  updatedAt?: string;
-}
+import { Category } from "./category";
 
 export interface Product {
   id: string;
