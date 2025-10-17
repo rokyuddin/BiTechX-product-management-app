@@ -41,18 +41,18 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
+    <div className="min-h-screen flex items-center justify-center bg-background-light p-4">
       <div className="w-full max-w-md bg-white rounded-xl shadow-lg p-8">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-slate-900 mb-2">
+          <h1 className="text-3xl font-bold text-primary-dark mb-2">
             Product Manager
           </h1>
-          <p className="text-slate-600">Sign in to get started</p>
+          <p className="text-secondary">Sign in to get started</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-2">
+            <label className="block text-sm font-medium text-primary-dark mb-2">
               Email
             </label>
             <input
@@ -63,21 +63,21 @@ export default function LoginPage() {
                 setLocalError("");
               }}
               placeholder="you@example.com"
-              className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+              className="w-full px-4 py-2 border border-primary-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary transition"
               disabled={isLoading}
             />
           </div>
 
           {error && (
-            <div className="p-3 bg-red-50 border border-red-200 rounded-lg">
-              <p className="text-sm text-red-700">{error}</p>
+            <div className="p-3 bg-danger/10 border border-danger/20 rounded-lg">
+              <p className="text-sm text-danger">{error}</p>
             </div>
           )}
 
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full bg-blue-600 hover:bg-blue-700 disabled:opacity-50 text-white font-semibold py-2 rounded-lg transition duration-200"
+            className="w-full bg-secondary hover:bg-secondary/90 disabled:opacity-50 text-white font-semibold py-2 rounded-lg transition duration-200"
           >
             {isLoading ? "Signing in..." : "Sign In"}
           </button>
