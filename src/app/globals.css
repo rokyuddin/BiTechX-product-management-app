@@ -1,32 +1,106 @@
 @import "tailwindcss";
-/* 
+
+/* Custom Color Palette - Coolors.co */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Primary Colors */
+  --color-primary-dark: #0d1821;
+  --color-background-light: #eff1f3;
+  --color-secondary: #4e6e5d;
+  --color-accent: #ad8a64;
+  --color-danger: #a44a3f;
+
+  /* Extended Palette */
+  --color-primary-50: #f8f9fa;
+  --color-primary-100: #e9ecef;
+  --color-primary-200: #dee2e6;
+  --color-primary-300: #ced4da;
+  --color-primary-400: #adb5bd;
+  --color-primary-500: #6c757d;
+  --color-primary-600: #495057;
+  --color-primary-700: #343a40;
+  --color-primary-800: #212529;
+  --color-primary-900: #0d1821;
+
+  /* Semantic Colors */
+  --color-success: #4e6e5d;
+  --color-warning: #ad8a64;
+  --color-error: #a44a3f;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-primary-dark: var(--color-primary-dark);
+  --color-background-light: var(--color-background-light);
+  --color-secondary: var(--color-secondary);
+  --color-accent: var(--color-accent);
+  --color-danger: var(--color-danger);
+
+  --color-primary-50: var(--color-primary-50);
+  --color-primary-100: var(--color-primary-100);
+  --color-primary-200: var(--color-primary-200);
+  --color-primary-300: var(--color-primary-300);
+  --color-primary-400: var(--color-primary-400);
+  --color-primary-500: var(--color-primary-500);
+  --color-primary-600: var(--color-primary-600);
+  --color-primary-700: var(--color-primary-700);
+  --color-primary-800: var(--color-primary-800);
+  --color-primary-900: var(--color-primary-900);
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-} */
-
-/* body {
-  background: var(--background);
-  color: var(--foreground);
-} */
+/* Base Styles */
+body {
+  background-color: var(--color-background-light);
+  color: var(--color-primary-dark);
+}
 
 /* Smooth transitions */
 .transition {
   transition-property: color, background-color, border-color, box-shadow;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 200ms;
+}
+
+/* Custom utility classes */
+.text-primary-dark {
+  color: var(--color-primary-dark);
+}
+.text-secondary {
+  color: var(--color-secondary);
+}
+.text-accent {
+  color: var(--color-accent);
+}
+.text-danger {
+  color: var(--color-danger);
+}
+
+.bg-primary-dark {
+  background-color: var(--color-primary-dark);
+}
+.bg-background-light {
+  background-color: var(--color-background-light);
+}
+.bg-secondary {
+  background-color: var(--color-secondary);
+}
+.bg-accent {
+  background-color: var(--color-accent);
+}
+.bg-danger {
+  background-color: var(--color-danger);
+}
+
+.border-primary-dark {
+  border-color: var(--color-primary-dark);
+}
+.border-secondary {
+  border-color: var(--color-secondary);
+}
+.border-accent {
+  border-color: var(--color-accent);
+}
+.border-danger {
+  border-color: var(--color-danger);
 }
